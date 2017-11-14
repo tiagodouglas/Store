@@ -23,6 +23,7 @@ app.use(cors());
 
 consign({ cwd: 'src', verbose: false })
     .include('api/routes/pingRoute.js')
+    .then('models')
     .into(app);
 
 module.exports = app;
