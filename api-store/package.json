@@ -1,0 +1,27 @@
+{
+    "name": "api-store",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "set DB_PORT=27017 && set MONGO_URI=mongodb://localhost/loja-roupa && node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tiagodouglas/Store.git"
+    },
+    "author": "Tiago Douglas",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tiagodouglas/Store/issues"
+    },
+    "homepage": "https://github.com/tiagodouglas/Store#readme",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "consign": "^0.1.6",
+        "cors": "^2.8.4",
+        "express": "^4.16.2",
+        "mongoose": "^4.13.2"
+    }
+}
