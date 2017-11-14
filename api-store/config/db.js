@@ -4,20 +4,20 @@ module.exports = function(uri) {
     mongoose.connect(uri, { useMongoClient: true });
 
     mongoose.connection.on('connected', function() {
-        console.log('Mongoose! conectado de  ' + uri);
+        console.log('MongoDB connection is established');
     });
 
     mongoose.connection.on('disconnected', function() {
-        console.log('Mongoose! desconectado de  ' + uri);
+        console.log('MongoDB disconnected ');
     });
 
     mongoose.connection.on('error', function() {
-        console.log('Mongoose! Erro de conexão de ' + uri);
+        console.log('MongoDB connection error');
     });
 
     process.on('SIGINT', function() {
         mongoose.connection.close(function() {
-            console.log('Mongoose! encerrado pelo término da aplicação');
+            console.log('MongoDB connection ended');
             process.exit(0);
         });
     });
