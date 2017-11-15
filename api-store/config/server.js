@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 consign({ cwd: 'src' })
-    .include('api/routes')
+    .include('models')
+    .then('api/routes')
     .into(app);
 
 module.exports = app;
