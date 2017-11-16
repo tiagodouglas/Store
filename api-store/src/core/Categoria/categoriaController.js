@@ -1,22 +1,15 @@
 const mongoose = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
-const Cliente = mongoose.model('Cliente');
+const Categoria = mongoose.model('Categoria');
 
-const inserirCliente = (req, res) => {
+const inserirCategoria = (req, res) => {
 
     const params = {
         nome: req.body.nome,
-        endereco: req.body.endereco,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        status: req.body.status,
-        dataCadastro: new Date()
+        descricao: req.body.descricao   
     }
 
-    Cliente.create(params, (err, data) => {
+    Categoria.create(params, (err, data) => {
 
         if (err)
             return res.status(500).json({
@@ -28,27 +21,20 @@ const inserirCliente = (req, res) => {
         return res.status(201).json({
             content: {
                 "_id": data._id,
-                "message": `Cliente [${data.nome}] inserido com sucesso`
+                "message": `Categoria [${data.nome}] inserido com sucesso`
             }
         });
     });
 
 }
 
-const alterarCliente = (req, res) => {
-        const params = {
+const alterarCategoria = (req, res) => {
+    const params = {
         nome: req.body.nome,
-        endereco: req.body.endereco,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        status: req.body.status,
-        dataCadastro: new Date()
+        descricao: req.body.descricao      
     }
 
-    Cliente.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Categoria.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                 content: {
@@ -58,14 +44,14 @@ const alterarCliente = (req, res) => {
 
         return res.status(200).json({
             content: {
-                "message": `Cliente [${data.nome}] alterado com sucesso`
+                "message": `Categoria [${data.nome}] alterado com sucesso`
             }
         });
     });
 }
 
-const selecionarCliente = (req, res) => {
-    Cliente.find({}, (err, data) => {
+const selecionarCategoria = (req, res) => {
+    Categoria.find({}, (err, data) => {
 
         if (err)
             return res.status(500).json({
@@ -83,8 +69,8 @@ const selecionarCliente = (req, res) => {
 
 }
 
-const selecionarClientePorId = (req, res) => {
-    Cliente.findById(new ObjectId(req.params.id), (err, data) => {
+const selecionarCategoriaPorId = (req, res) => {
+    Categoria.findById(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             return res.status(500).json({
                 content: { "message": "Erro interno" }
@@ -93,7 +79,7 @@ const selecionarClientePorId = (req, res) => {
 
         if (!data || data.length === 0)
             return res.status(404).json({
-                content: { 'message': 'Cliente não encontrado' }
+                content: { 'message': 'Categoria não encontrado' }
             });
 
 
@@ -103,8 +89,8 @@ const selecionarClientePorId = (req, res) => {
 
 }
 
-const excluirCliente = (req, res) => {
-    Cliente.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
+const excluirCategoria = (req, res) => {
+    Categoria.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             console.log(err.message);
             return res.status(500).json({
@@ -116,16 +102,16 @@ const excluirCliente = (req, res) => {
 
         return res.status(200).json({
             content: {
-                "message": `Cliente [${data.nome}] removido com sucesso`
+                "message": `Categoria [${data.nome}] removido com sucesso`
             }
         });
     });
 }
 
 module.exports = {
-    inserirCliente,
-    selecionarCliente,
-    selecionarClientePorId,
-    alterarCliente,
-    excluirCliente
+    inserirCategoria,
+    selecionarCategoria,
+    selecionarCategoriaPorId,
+    alterarCategoria,
+    excluirCategoria
 }

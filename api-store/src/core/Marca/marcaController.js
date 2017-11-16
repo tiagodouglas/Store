@@ -1,22 +1,13 @@
 const mongoose = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
-const Cliente = mongoose.model('Cliente');
+const Marca = mongoose.model('Marca');
 
-const inserirCliente = (req, res) => {
-
+const inserirMarca = (req, res) => {
     const params = {
-        nome: req.body.nome,
-        endereco: req.body.endereco,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        status: req.body.status,
-        dataCadastro: new Date()
+        nome: req.body.nome
     }
 
-    Cliente.create(params, (err, data) => {
+    Marca.create(params, (err, data) => {
 
         if (err)
             return res.status(500).json({
@@ -28,27 +19,19 @@ const inserirCliente = (req, res) => {
         return res.status(201).json({
             content: {
                 "_id": data._id,
-                "message": `Cliente [${data.nome}] inserido com sucesso`
+                "message": `Marca [${data.nome}] inserido com sucesso`
             }
         });
     });
 
 }
 
-const alterarCliente = (req, res) => {
-        const params = {
-        nome: req.body.nome,
-        endereco: req.body.endereco,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        status: req.body.status,
-        dataCadastro: new Date()
+const alterarMarca = (req, res) => {
+    const params = {
+        nome: req.body.nome
     }
 
-    Cliente.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Marca.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                 content: {
@@ -58,14 +41,14 @@ const alterarCliente = (req, res) => {
 
         return res.status(200).json({
             content: {
-                "message": `Cliente [${data.nome}] alterado com sucesso`
+                "message": `Marca [${data.nome}] alterado com sucesso`
             }
         });
     });
 }
 
-const selecionarCliente = (req, res) => {
-    Cliente.find({}, (err, data) => {
+const selecionarMarca = (req, res) => {
+    Marca.find({}, (err, data) => {
 
         if (err)
             return res.status(500).json({
@@ -83,8 +66,8 @@ const selecionarCliente = (req, res) => {
 
 }
 
-const selecionarClientePorId = (req, res) => {
-    Cliente.findById(new ObjectId(req.params.id), (err, data) => {
+const selecionarMarcaPorId = (req, res) => {
+    Marca.findById(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             return res.status(500).json({
                 content: { "message": "Erro interno" }
@@ -93,7 +76,7 @@ const selecionarClientePorId = (req, res) => {
 
         if (!data || data.length === 0)
             return res.status(404).json({
-                content: { 'message': 'Cliente não encontrado' }
+                content: { 'message': 'Marca não encontrado' }
             });
 
 
@@ -103,8 +86,8 @@ const selecionarClientePorId = (req, res) => {
 
 }
 
-const excluirCliente = (req, res) => {
-    Cliente.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
+const excluirMarca = (req, res) => {
+    Marca.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             console.log(err.message);
             return res.status(500).json({
@@ -116,16 +99,16 @@ const excluirCliente = (req, res) => {
 
         return res.status(200).json({
             content: {
-                "message": `Cliente [${data.nome}] removido com sucesso`
+                "message": `Marca [${data.nome}] removido com sucesso`
             }
         });
     });
 }
 
 module.exports = {
-    inserirCliente,
-    selecionarCliente,
-    selecionarClientePorId,
-    alterarCliente,
-    excluirCliente
+    inserirMarca,
+    selecionarMarca,
+    selecionarMarcaPorId,
+    alterarMarca,
+    excluirMarca
 }

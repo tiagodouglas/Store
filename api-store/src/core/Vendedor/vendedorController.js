@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
-const Cliente = mongoose.model('Cliente');
+const Vendedor = mongoose.model('Vendedor');
 
-const inserirCliente = (req, res) => {
+const inserirVendedor = (req, res) => {
 
     const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep,
         telefone: req.body.telefone,
         cpf: req.body.cpf,
         status: req.body.status,
         dataCadastro: new Date()
     }
 
-    Cliente.create(params, (err, data) => {
+    Vendedor.create(params, (err, data) => {
 
         if (err)
             return res.status(500).json({
@@ -28,27 +25,24 @@ const inserirCliente = (req, res) => {
         return res.status(201).json({
             content: {
                 "_id": data._id,
-                "message": `Cliente [${data.nome}] inserido com sucesso`
+                "message": `Vendedor [${data.nome}] inserido com sucesso`
             }
         });
     });
 
 }
 
-const alterarCliente = (req, res) => {
-        const params = {
+const alterarVendedor = (req, res) => {
+    const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep,
         telefone: req.body.telefone,
         cpf: req.body.cpf,
         status: req.body.status,
         dataCadastro: new Date()
     }
 
-    Cliente.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Vendedor.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                 content: {
@@ -58,14 +52,14 @@ const alterarCliente = (req, res) => {
 
         return res.status(200).json({
             content: {
-                "message": `Cliente [${data.nome}] alterado com sucesso`
+                "message": `Vendedor [${data.nome}] alterado com sucesso`
             }
         });
     });
 }
 
-const selecionarCliente = (req, res) => {
-    Cliente.find({}, (err, data) => {
+const selecionarVendedor = (req, res) => {
+    Vendedor.find({}, (err, data) => {
 
         if (err)
             return res.status(500).json({
@@ -83,8 +77,8 @@ const selecionarCliente = (req, res) => {
 
 }
 
-const selecionarClientePorId = (req, res) => {
-    Cliente.findById(new ObjectId(req.params.id), (err, data) => {
+const selecionarVendedorPorId = (req, res) => {
+    Vendedor.findById(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             return res.status(500).json({
                 content: { "message": "Erro interno" }
@@ -93,7 +87,7 @@ const selecionarClientePorId = (req, res) => {
 
         if (!data || data.length === 0)
             return res.status(404).json({
-                content: { 'message': 'Cliente não encontrado' }
+                content: { 'message': 'Vendedor não encontrado' }
             });
 
 
@@ -103,8 +97,8 @@ const selecionarClientePorId = (req, res) => {
 
 }
 
-const excluirCliente = (req, res) => {
-    Cliente.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
+const excluirVendedor = (req, res) => {
+    Vendedor.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             console.log(err.message);
             return res.status(500).json({
@@ -116,16 +110,16 @@ const excluirCliente = (req, res) => {
 
         return res.status(200).json({
             content: {
-                "message": `Cliente [${data.nome}] removido com sucesso`
+                "message": `Vendedor [${data.nome}] removido com sucesso`
             }
         });
     });
 }
 
 module.exports = {
-    inserirCliente,
-    selecionarCliente,
-    selecionarClientePorId,
-    alterarCliente,
-    excluirCliente
+    inserirVendedor,
+    selecionarVendedor,
+    selecionarVendedorPorId,
+    alterarVendedor,
+    excluirVendedor
 }
