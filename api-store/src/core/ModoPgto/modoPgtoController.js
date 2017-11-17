@@ -10,7 +10,6 @@ const inserirModoPgto = (req, res) => {
     }
 
     ModoPgto.create(params, (err, data) => {
-
         if (err)
             return res.status(500).json({
                 content: {
