@@ -7,6 +7,7 @@ const inserirCliente = (req, res) => {
     const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
+        bairro: req.body.bairro,
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep,
@@ -39,6 +40,7 @@ const alterarCliente = (req, res) => {
         const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
+        bairro: req.body.bairro,
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep,

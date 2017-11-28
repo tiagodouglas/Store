@@ -5,7 +5,6 @@ const config = {
 
 function init() {
     global.config = config;
-    console.log('iniciou')
 }
 
 module.exports = init();

@@ -18,6 +18,10 @@ module.exports = () => {
             type: String,
             required: true
         },
+        bairro:{
+            type:String,
+            required: true
+        },
         cep: {
             type: Number,
             required: true

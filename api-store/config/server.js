@@ -7,7 +7,7 @@ require('./environment/settings');
 require('dotenv').config();
 
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = true;
 
 if (isProduction)
     db(`mongodb://${process.env.USER}:${process.env.PASS}@ds159235.mlab.com:59235/db-store`);
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-consign({ cwd: 'src' })
+consign({ cwd: 'src', verbose: false })
     .include('models')
     .then('api/routes')
     .into(app);
