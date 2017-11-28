@@ -1,3 +1,64 @@
-<p>
-  cliente-form works!
-</p>
+<form class="text-center">
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nome">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input type="number" #cpf max="99999999999" maxlength="11" matInput placeholder="CPF">
+          <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Endereço">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input type="number" matInput placeholder="Numero">
+        </mat-form-field>
+      </td>
+      <td>
+        <td>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Bairro">
+          </mat-form-field>
+        </td>
+    </tr>
+  </table>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Cidade">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput #estado maxlength="2" placeholder="Estado">
+          <mat-hint align="end">{{estado.value.length}} / 2</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input type="number" matInput #postalCode max="99999999" maxlength="8" placeholder="CEP" value="">
+          <mat-hint align="end">{{postalCode.value.length}} / 8</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <div class="text-center">
+    <button type="submit" mat-raised-button color="primary">Salvar</button>
+  </div>
+</form>

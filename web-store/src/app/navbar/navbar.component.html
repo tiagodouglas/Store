@@ -1,6 +1,6 @@
-<mat-toolbar class="navbar" layout="row" color="primary">
-    <span>{{title}}</span>
-
+<mat-toolbar class="navbar sticky-top " layout="row" color="primary">
+    <span class="navbar-brand">{{title}}</span>
+    
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
 
         <button mat-button routerLink="/">
@@ -16,7 +16,7 @@
         <button mat-button routerLink="/cliente">Venda <mat-icon>shoppping_cart</mat-icon></button>
         <button mat-button routerLink="/historico">Historico <mat-icon>history</mat-icon></button>
     </div>
-
+    <!-- <span class="fill-remaining-space"></span> -->
 
     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
         Admin

@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './app.routes';
+import { FormsModule } from '@angular/forms'
 import { ClienteListaComponent } from './cliente/cliente-lista/cliente-lista.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { TitleComponent } from './title/title.component';
@@ -39,7 +40,8 @@ import { TitleComponent } from './title/title.component';
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

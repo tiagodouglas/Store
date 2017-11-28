@@ -1,3 +1,4 @@
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { ClienteListaComponent } from './cliente/cliente-lista/cliente-lista.component';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router'
@@ -13,6 +14,10 @@ const routes : Routes = [
    {
        path: 'cliente',
        component: ClienteListaComponent
+   },
+   {
+       path: 'cliente/novo',
+       component: ClienteFormComponent
    }
 ]
 

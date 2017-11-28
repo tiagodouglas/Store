@@ -1,16 +1,15 @@
-<div class="align-self-end">
-    <button mat-raised-button color="primary">Novo</button>
-
-
+<div class="text-right">
+    <button mat-fab color="primary" routerLink="/cliente/novo"><mat-icon>add</mat-icon></button>
 </div>
 
-<table class="table">
+<table class="table table-hover table-responsive-md">
     <thead>
         <tr>
             <th>Status</th>
             <th>Nome</th>
             <th>Endereço</th>
             <th>Cidade</th>
+            <th>Bairro</th>
             <th>CPF</th>
             <th>Telefone</th>
             <th></th>
@@ -20,11 +19,12 @@
     <tbody>
         <tr *ngFor="let cliente of clientes">
             <td>
-                <mat-icon [ngStyle]="{'color': cliente.status? 'green' : 'red'}">fiber_manual_record</mat-icon>
+                <mat-icon [ngStyle]="{'color': cliente.status? '#64DD17' : '#E53935'}">fiber_manual_record</mat-icon>
             </td>
             <td>{{cliente.nome}}</td>
             <td>{{cliente.endereco}}</td>
             <td>{{cliente.cidade}}</td>
+            <td>{{cliente.bairro}}</td>
             <td>{{cliente.cpf}}</td>
             <td>{{cliente.telefone}}</td>
             <td>
