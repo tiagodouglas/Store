@@ -1,10 +1,13 @@
 <app-navbar></app-navbar>
 
 
-<div class="container-fluid" id="main">
+<div class="card">
 
-    <app-sidenav></app-sidenav>
-    
-  <!-- <router-outlet></router-outlet> -->
+    <div class="card-body">
+        <h4 class="card-title">
+            <app-title (titleChanged)="changedTitle($event)" [title]="title"></app-title>
+        </h4>
+        <router-outlet></router-outlet>
 
+    </div>
 </div>

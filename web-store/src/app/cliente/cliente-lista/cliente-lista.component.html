@@ -1,0 +1,38 @@
+<div class="align-self-end">
+    <button mat-raised-button color="primary">Novo</button>
+
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Cidade</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes">
+            <td>
+                <mat-icon [ngStyle]="{'color': cliente.status? 'green' : 'red'}">fiber_manual_record</mat-icon>
+            </td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.endereco}}</td>
+            <td>{{cliente.cidade}}</td>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.telefone}}</td>
+            <td>
+                <button mat-button><mat-icon>mode_edit</mat-icon></button>
+            </td>
+            <td>
+                <button mat-button><mat-icon>delete</mat-icon></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
