@@ -3,13 +3,20 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
     name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-    transform(items: any[], field: string, value: string): any[] {
+    transform(items: any[], value: string): any[] {
         if (!items) {
             return [];
         }
-        if (!field || !value) {
+        if (!value) {
             return items;
         }
-        return items.filter(singleItem => singleItem[field].toLowerCase().includes(value.toLowerCase()));
+        return items.filter(singleItem => 
+            singleItem['nome'].normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||  
+            singleItem['endereco'].normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
+            singleItem['cidade'].normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
+            singleItem['bairro'].normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
+            singleItem['cpf'].toString().toLowerCase().includes(value.toLowerCase()) ||
+            singleItem['telefone'].toString().toLowerCase().includes(value.toLowerCase())
+        );
     }
 }

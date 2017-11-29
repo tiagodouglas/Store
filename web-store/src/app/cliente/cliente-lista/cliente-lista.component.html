@@ -34,7 +34,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let cliente of pagedItems | filter : 'nome' : searchString; let i = index">
+        <tr *ngFor="let cliente of pagedItems | filter : searchString; let i = index">
             <td>
                 <mat-icon [ngStyle]="{'color': cliente.status? '#64DD17' : '#E53935'}">fiber_manual_record</mat-icon>
             </td>
