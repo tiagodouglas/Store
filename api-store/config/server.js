@@ -8,7 +8,7 @@ require('./environment/settings');
 const isProduction = global.config.isProduction;
 
 if (isProduction)
-    db(`mongodb://${process.env.USER}:${process.env.PASS}@ds159235.mlab.com:59235/db-store`);
+    db(`mongodb://${global.config.USER}:${global.config.PASS}@ds159235.mlab.com:59235/db-store`);
 else
     db('mongodb://localhost/db-store');
 

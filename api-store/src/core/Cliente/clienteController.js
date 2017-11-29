@@ -38,6 +38,7 @@ const alterarCliente = (req, res) => {
         endereco: req.body.endereco,
         bairro: req.body.bairro,
         numero: req.body.numero,
+        telefone: req.body.telefone,
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep,
