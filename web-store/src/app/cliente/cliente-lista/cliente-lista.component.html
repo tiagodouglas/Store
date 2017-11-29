@@ -1,14 +1,23 @@
 <div class="row">
     <div class="col-md-6">
         <div class="text-left">
-            <button mat-button routerLink="/"><mat-icon>arrow_back</mat-icon></button>
+            <button mat-button routerLink="/">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
         </div>
     </div>
     <div class="col-md-6">
         <div class="text-right">
-            <button mat-fab routerLink="/cliente/novo"><mat-icon>add</mat-icon></button>
+            <button mat-fab routerLink="/cliente/novo">
+                <mat-icon>add</mat-icon>
+            </button>
         </div>
     </div>
+</div>
+<div cellspacing="0">
+    <mat-form-field style="width:100%">
+        <input matInput name="searchString" [(ngModel)]="searchString" placeholder="Pesquisar cliente">
+    </mat-form-field>
 </div>
 <table class="table table-hover table-responsive-md">
     <thead>
@@ -25,7 +34,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let cliente of clientes">
+        <tr *ngFor="let cliente of pagedItems | filter : 'nome' : searchString; let i = index">
             <td>
                 <mat-icon [ngStyle]="{'color': cliente.status? '#64DD17' : '#E53935'}">fiber_manual_record</mat-icon>
             </td>
@@ -36,10 +45,14 @@
             <td>{{cliente.cpf}}</td>
             <td>{{cliente.telefone}}</td>
             <td>
-                <button [routerLink]="['/cliente', cliente._id]" mat-button><mat-icon>mode_edit</mat-icon></button>
+                <button [routerLink]="['/cliente', cliente._id]" mat-button>
+                    <mat-icon>mode_edit</mat-icon>
+                </button>
             </td>
             <td>
-                <button mat-button [mat-menu-trigger-for]="deleteMenu" fxHide="false" fxHide.gt-sm><mat-icon>delete</mat-icon></button>
+                <button mat-button [mat-menu-trigger-for]="deleteMenu" fxHide="false" fxHide.gt-sm>
+                    <mat-icon>delete</mat-icon>
+                </button>
             </td>
 
             <mat-menu x-position="after" #deleteMenu="matMenu">
@@ -49,3 +62,23 @@
         </tr>
     </tbody>
 </table>
+
+<div class="text-rigth">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <button mat-button (click)="setPage(1)">Primeira</button>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <button mat-button (click)="setPage(pager.currentPage - 1)">Anterior</button>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <button mat-button (click)="setPage(page)">{{page}}</button>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <button mat-button (click)="setPage(pager.currentPage + 1)">Proxima</button>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <button mat-button (click)="setPage(pager.totalPages)">Ultima</button>
+        </li>
+    </ul>
+</div>

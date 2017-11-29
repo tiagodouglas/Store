@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ClienteListaComponent } from './cliente/cliente-lista/cliente-lista.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { TitleComponent } from './title/title.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TitleComponent } from './title/title.component';
     HomeComponent,
     ClienteListaComponent,
     ClienteFormComponent,
-    TitleComponent
+    TitleComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

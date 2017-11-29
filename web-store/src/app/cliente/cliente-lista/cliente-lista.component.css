@@ -5,13 +5,13 @@ tr {
 }
 
 table {
-    height: 400px;
+    height: 450px;
     display: -moz-groupbox;
 }
 
 tbody {
-    overflow-y: scroll;
-    height: 350px;
+    /* overflow-y: scroll; */
+    height: 400px;
     width: 100%;
     position: absolute;
 }
