@@ -4,10 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./db');
 require('./environment/settings');
-require('dotenv').config();
 
-
-const isProduction = true;
+const isProduction = global.config.isProduction;
 
 if (isProduction)
     db(`mongodb://${process.env.USER}:${process.env.PASS}@ds159235.mlab.com:59235/db-store`);

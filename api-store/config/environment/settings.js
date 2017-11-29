@@ -1,5 +1,6 @@
+require('dotenv').config();
 const config = {
-    isProduction: process.env.NODE_ENV && process.env.NODE_ENV === 'production',
+    isProduction: process.env.ENV === 'prod',
     PORT:3000
 };
 

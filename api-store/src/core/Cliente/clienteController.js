@@ -110,10 +110,39 @@ const excluirCliente = (req, res) => {
     });
 }
 
+const totalClientes = (req, res) => {
+
+    let ativos = 0;
+    let inativos = 0;
+    Cliente.count({status: true}, function( err, count){
+        if (err) {
+            return res.status(500).json({
+                "message": "Erro interno"
+            })
+        }
+        ativos = count;
+    }).then(
+
+    Cliente.count({status: false}, function( err, count){
+        if (err) {
+            return res.status(500).json({
+                "message": "Erro interno"
+            })
+        }
+        inativos = count;
+    })).then(() => {
+
+        return res.status(200).json({ativos: ativos, inativos: inativos});
+        
+    });
+
+}
+
 module.exports = {
     inserirCliente,
     selecionarCliente,
     selecionarClientePorId,
     alterarCliente,
-    excluirCliente
+    excluirCliente,
+    totalClientes
 }

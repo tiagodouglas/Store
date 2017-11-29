@@ -9,6 +9,10 @@ module.exports = (app) => {
         cliente.selecionarCliente(req, res);
     });
 
+    app.get('/totalCliente', (req, res) => {
+        cliente.totalClientes(req, res);
+    })
+
     app.get('/cliente/:id', (req, res) => {
         cliente.selecionarClientePorId(req, res);
     });
