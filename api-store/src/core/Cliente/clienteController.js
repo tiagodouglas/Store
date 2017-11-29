@@ -45,7 +45,7 @@ const alterarCliente = (req, res) => {
         telefone: req.body.telefone,
         cpf: req.body.cpf,
         status: req.body.status,
-        dataCadastro: new Date()
+        dataAlteracao: new Date()
     }
 
     Cliente.findByIdAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
