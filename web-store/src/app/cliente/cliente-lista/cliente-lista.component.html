@@ -1,7 +1,15 @@
-<div class="text-right">
-    <button mat-fab color="primary" routerLink="/cliente/novo"><mat-icon>add</mat-icon></button>
+<div class="row">
+    <div class="col-md-6">
+        <div class="text-left">
+            <button mat-button routerLink="/"><mat-icon>arrow_back</mat-icon></button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="text-right">
+            <button mat-fab routerLink="/cliente/novo"><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
 </div>
-
 <table class="table table-hover table-responsive-md">
     <thead>
         <tr>
@@ -28,11 +36,16 @@
             <td>{{cliente.cpf}}</td>
             <td>{{cliente.telefone}}</td>
             <td>
-                <button mat-button><mat-icon>mode_edit</mat-icon></button>
+                <button [routerLink]="['/cliente', cliente._id]" mat-button><mat-icon>mode_edit</mat-icon></button>
             </td>
             <td>
-                <button mat-button><mat-icon>delete</mat-icon></button>
+                <button mat-button [mat-menu-trigger-for]="deleteMenu" fxHide="false" fxHide.gt-sm><mat-icon>delete</mat-icon></button>
             </td>
+
+            <mat-menu x-position="after" #deleteMenu="matMenu">
+                <button mat-menu-item (click)="delete(cliente._id)">Sim</button>
+                <button mat-menu-item>Não</button>
+            </mat-menu>
         </tr>
     </tbody>
 </table>

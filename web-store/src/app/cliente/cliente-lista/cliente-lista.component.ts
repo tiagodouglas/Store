@@ -1,6 +1,4 @@
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DataSource } from '@angular/cdk/collections';
+import { MatSnackBar } from '@angular/material';
 import { ClienteService } from './../cliente.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,12 +12,30 @@ export class ClienteListaComponent implements OnInit {
   private clientes: any
   title: 'Clientes'
 
-  constructor(private service: ClienteService) { }
+  constructor(private service: ClienteService, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
+
+    this.getAll();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackbar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  getAll() {
     this.service.getAll().subscribe(data => this.clientes = data);
   }
 
-  
-
+  delete(id: string) {
+    this.service.delete(id).subscribe(
+      (data) => {
+        this.openSnackBar(data['message'], 'Ok');
+        this.getAll();
+      },
+      erro => console.error(erro)
+    )
+  }
 }

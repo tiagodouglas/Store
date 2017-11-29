@@ -1,14 +1,12 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid">
-    <div class="card">
-
-        <div class="card-body">
-            <h4 class="card-title text-center">
-                <app-title (titleChanged)="changedTitle($event)" [title]="title"></app-title>
-            </h4>
+    <mat-card>
+        <mat-card-title>
+            <app-title (titleChanged)="changedTitle($event)" [title]="title"></app-title>
+        </mat-card-title>
+        <mat-card-content>
             <router-outlet></router-outlet>
-
-        </div>
-    </div>
+        </mat-card-content>
+    </mat-card>
 </div>

@@ -6,6 +6,7 @@ export class Cliente {
   public nome: string;
   public endereco: string;
   public cidade: string;
+  public numero: number;
   public estado: string;
   public cep: number;
   public telefone: string;
@@ -22,6 +23,23 @@ export class ClienteService {
 
   public getAll() {
     return this.http.get('http://localhost:3000/cliente')
+  }
+
+  public getById(id: String){
+    return this.http.get('http://localhost:3000/cliente/' + id)
+  }
+
+  public submit(data: Cliente) {
+    if(data._id) {
+      return this.http.put('http://localhost:3000/cliente/' + data._id, data)
+    }
+    else {
+      return this.http.post('http://localhost:3000/cliente', data)
+    }
+  }
+
+  public delete(id: string) {
+    return this.http.delete('http://localhost:3000/cliente/' + id)  
   }
 
 }
