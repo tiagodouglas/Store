@@ -42,4 +42,8 @@ export class ClienteService {
     return this.http.delete('http://localhost:3000/cliente/' + id)  
   }
 
+  public totalCliente(){
+    return this.http.get('http://localhost:3000/totalCliente');
+  }
+
 }
