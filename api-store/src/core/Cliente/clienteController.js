@@ -8,6 +8,7 @@ const inserirCliente = (req, res) => {
         nome: req.body.nome,
         endereco: req.body.endereco,
         bairro: req.body.bairro,
+        numero: req.body.numero,
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep,
@@ -21,26 +22,22 @@ const inserirCliente = (req, res) => {
 
         if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             });
 
         return res.status(201).json({
-            content: {
-                "_id": data._id,
-                "message": `Cliente [${data.nome}] inserido com sucesso`
-            }
+            "message": `Cliente [${data.nome}] inserido com sucesso`
         });
     });
 
 }
 
 const alterarCliente = (req, res) => {
-        const params = {
+    const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
         bairro: req.body.bairro,
+        numero: req.body.numero,
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep,
@@ -53,27 +50,21 @@ const alterarCliente = (req, res) => {
     Cliente.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             });
 
         return res.status(200).json({
-            content: {
-                "message": `Cliente [${data.nome}] alterado com sucesso`
-            }
+            "message": `Cliente [${data.nome}] alterado com sucesso`
         });
     });
 }
 
 const selecionarCliente = (req, res) => {
-    Cliente.find({}, (err, data) => {
+    Cliente.find({}, null, { sort: { nome: 1 } }, (err, data) => {
 
         if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             })
 
 
@@ -89,13 +80,13 @@ const selecionarClientePorId = (req, res) => {
     Cliente.findById(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             return res.status(500).json({
-                content: { "message": "Erro interno" }
+                "message": "Erro interno"
             })
         }
 
         if (!data || data.length === 0)
             return res.status(404).json({
-                content: { 'message': 'Cliente não encontrado' }
+                'message': 'Cliente não encontrado'
             });
 
 
@@ -108,18 +99,13 @@ const selecionarClientePorId = (req, res) => {
 const excluirCliente = (req, res) => {
     Cliente.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
         if (err) {
-            console.log(err.message);
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             })
         }
 
         return res.status(200).json({
-            content: {
-                "message": `Cliente [${data.nome}] removido com sucesso`
-            }
+            "message": `Cliente [${data.nome}] excluido com sucesso`
         });
     });
 }

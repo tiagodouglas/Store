@@ -14,12 +14,16 @@ module.exports = () => {
             type: String,
             required: true
         },
+        numero: {
+            type: Number,
+            required: true
+        },
         estado: {
             type: String,
             required: true
         },
-        bairro:{
-            type:String,
+        bairro: {
+            type: String,
             required: true
         },
         cep: {
