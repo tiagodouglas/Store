@@ -48,7 +48,7 @@ const alterarCliente = (req, res) => {
         dataCadastro: new Date()
     }
 
-    Cliente.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Cliente.findByIdAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                 "message": "Erro interno"
