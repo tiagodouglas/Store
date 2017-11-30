@@ -1,3 +1,5 @@
+import { VendedorFormComponent } from './vendedor/vendedor-form/vendedor-form.component';
+import { VendedorListaComponent } from './vendedor/vendedor-lista/vendedor-lista.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { ClienteListaComponent } from './cliente/cliente-lista/cliente-lista.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +24,18 @@ const routes: Routes = [
     {
         path: 'cliente/:id',
         component: ClienteFormComponent
+    },
+    {
+        path: 'vendedor',
+        component: VendedorListaComponent
+    },
+    {
+        path: 'vendedor/novo',
+        component: VendedorFormComponent
+    },
+    {
+        path: 'vendedor/:id',
+        component: VendedorFormComponent
     }
 ]
 

@@ -1,26 +1,26 @@
 import { PagerService } from './../../services/pager.service';
 import { MatSnackBar } from '@angular/material';
-import { ClienteService } from './../cliente.service';
 import { Component, OnInit } from '@angular/core';
+import { VendedorService } from '../vendedor.service';
 
 @Component({
-  selector: 'app-cliente-lista',
-  templateUrl: './cliente-lista.component.html',
-  styleUrls: ['./cliente-lista.component.css'],
-  providers: [ClienteService, PagerService]
+  selector: 'app-vendedor-lista',
+  templateUrl: './vendedor-lista.component.html',
+  styleUrls: ['./vendedor-lista.component.css'],
+  providers: [VendedorService, PagerService]
 })
-export class ClienteListaComponent implements OnInit {
-  private clientes: any;
-  title: 'Clientes';
-  public cliente: any;
+export class VendedorListaComponent implements OnInit {
+  private vendedores: any;
+  title: 'Vendedores';
+  public vendedor: any;
   public searchString: string;
   pager: any = {};
   pagedItems: any[];
 
-  constructor(private service: ClienteService, private snackbar: MatSnackBar, private pagerService: PagerService) { }
+
+  constructor(private service: VendedorService, private snackbar: MatSnackBar, private pagerService: PagerService) { }
 
   ngOnInit() {
-
     this.getAll();
   }
 
@@ -35,16 +35,16 @@ export class ClienteListaComponent implements OnInit {
       return;
     }
 
-    if (this.clientes) {
-      this.pager = this.pagerService.getPager(this.clientes.length, page);
+    if (this.vendedores) {
+      this.pager = this.pagerService.getPager(this.vendedores.length, page);
 
-      this.pagedItems = this.clientes.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      this.pagedItems = this.vendedores.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
   }
 
   getAll() {
     this.service.getAll().subscribe(data => {
-      this.clientes = data;
+      this.vendedores = data;
       this.setPage(1);;
     });
   }
@@ -58,4 +58,5 @@ export class ClienteListaComponent implements OnInit {
       erro => console.error(erro)
     )
   }
+
 }

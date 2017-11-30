@@ -17,16 +17,12 @@ const inserirVendedor = (req, res) => {
 
         if (err)
             return res.status(500).json({
-                content: {
                     "message": "Erro interno"
-                }
             });
 
         return res.status(201).json({
-            content: {
                 "_id": data._id,
                 "message": `Vendedor [${data.nome}] inserido com sucesso`
-            }
         });
     });
 
@@ -45,15 +41,11 @@ const alterarVendedor = (req, res) => {
     Vendedor.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
-                content: {
                     "message": "Erro interno"
-                }
             });
 
         return res.status(200).json({
-            content: {
                 "message": `Vendedor [${data.nome}] alterado com sucesso`
-            }
         });
     });
 }
@@ -63,14 +55,12 @@ const selecionarVendedor = (req, res) => {
 
         if (err)
             return res.status(500).json({
-                content: {
                     "message": "Erro interno"
-                }
             })
 
 
         if (!data || data.length === 0)
-            return res.status(404).json(data);
+            return res.status(204).json(data);
 
         return res.status(200).json(data);
     });
@@ -81,13 +71,13 @@ const selecionarVendedorPorId = (req, res) => {
     Vendedor.findById(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             return res.status(500).json({
-                content: { "message": "Erro interno" }
+                 "message": "Erro interno" 
             })
         }
 
         if (!data || data.length === 0)
             return res.status(404).json({
-                content: { 'message': 'Vendedor não encontrado' }
+                 'message': 'Vendedor não encontrado' 
             });
 
 
@@ -102,16 +92,12 @@ const excluirVendedor = (req, res) => {
         if (err) {
             console.log(err.message);
             return res.status(500).json({
-                content: {
                     "message": "Erro interno"
-                }
             })
         }
 
         return res.status(200).json({
-            content: {
                 "message": `Vendedor [${data.nome}] removido com sucesso`
-            }
         });
     });
 }

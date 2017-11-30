@@ -1,0 +1,56 @@
+<div class="text-left">
+  <button mat-button routerLink="/cliente">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+
+
+<form #clienteForm="ngForm" (ngSubmit)="submit()">
+  <table class="full-width text-right" cellspacing="0">
+    <tr>
+      <td>
+        <mat-slide-toggle name="status" [(ngModel)]="model.status">Status</mat-slide-toggle>
+      </td>
+    </tr>
+  </table>
+
+  <div class="row">
+
+    <div class="col-md-6 offset-2">
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nome" name="nome" [(ngModel)]="model.nome" required>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width">
+              <input type="number" #cpf max="99999999999" maxlength="11" matInput placeholder="CPF" name="cpf" [(ngModel)]="model.cpf"
+                required>
+              <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width">
+              <input type="number" matInput placeholder="Telefone" name="telefone" [(ngModel)]="model.telefone" required>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Endereço" name="endereco" [(ngModel)]="model.endereco" required>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+
+  <div class="text-center">
+    <button type="submit" mat-raised-button color="primary">Salvar</button>
+  </div>
+</form>

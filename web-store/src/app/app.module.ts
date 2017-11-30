@@ -22,6 +22,8 @@ import { ClienteListaComponent } from './cliente/cliente-lista/cliente-lista.com
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { TitleComponent } from './title/title.component';
 import { FilterPipe } from './filter.pipe';
+import { VendedorListaComponent } from './vendedor/vendedor-lista/vendedor-lista.component';
+import { VendedorFormComponent } from './vendedor/vendedor-form/vendedor-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FilterPipe } from './filter.pipe';
     ClienteListaComponent,
     ClienteFormComponent,
     TitleComponent,
-    FilterPipe
+    FilterPipe,
+    VendedorListaComponent,
+    VendedorFormComponent
   ],
   imports: [
     BrowserModule,

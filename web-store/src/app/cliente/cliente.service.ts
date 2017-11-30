@@ -8,6 +8,7 @@ export class Cliente {
   public cidade: string;
   public numero: number;
   public estado: string;
+  public cpf: number;
   public cep: number;
   public telefone: string;
   public dataCadastro: Date;

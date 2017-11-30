@@ -22,6 +22,9 @@ module.exports = () => {
             type: Date,
             required: true
         },
+        dataAlterecao: {
+            type: Date
+        },
         status: {
             type: Boolean,
             required: true
