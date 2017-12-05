@@ -7,10 +7,16 @@ const inserirVendedor = (req, res) => {
     const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
+        bairro: req.body.bairro,
+        numero: req.body.numero,
+        cidade: req.body.cidade,
+        estado: req.body.estado,
+        cep: req.body.cep,
         telefone: req.body.telefone,
         cpf: req.body.cpf,
         status: req.body.status,
         dataCadastro: new Date()
+      
     }
 
     Vendedor.create(params, (err, data) => {
@@ -32,13 +38,18 @@ const alterarVendedor = (req, res) => {
     const params = {
         nome: req.body.nome,
         endereco: req.body.endereco,
+        bairro: req.body.bairro,
+        numero: req.body.numero,
+        cidade: req.body.cidade,
+        estado: req.body.estado,
+        cep: req.body.cep,
         telefone: req.body.telefone,
         cpf: req.body.cpf,
         status: req.body.status,
         dataCadastro: new Date()
     }
 
-    Vendedor.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Vendedor.findByIdAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                     "message": "Erro interno"
@@ -58,10 +69,6 @@ const selecionarVendedor = (req, res) => {
                     "message": "Erro interno"
             })
 
-
-        if (!data || data.length === 0)
-            return res.status(204).json(data);
-
         return res.status(200).json(data);
     });
 
@@ -74,12 +81,6 @@ const selecionarVendedorPorId = (req, res) => {
                  "message": "Erro interno" 
             })
         }
-
-        if (!data || data.length === 0)
-            return res.status(404).json({
-                 'message': 'Vendedor não encontrado' 
-            });
-
 
         return res.status(200).json(data);
 

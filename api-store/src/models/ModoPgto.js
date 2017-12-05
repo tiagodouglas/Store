@@ -6,7 +6,7 @@ module.exports = () => {
             type: String,
             required: true
         },
-        detalhe: {
+        descricao: {
             type: String,
             required: true
         }

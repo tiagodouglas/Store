@@ -7,8 +7,7 @@ module.exports = () => {
             required: true
         },
         descricao: {
-            type: String,
-            required: true
+            type: String
         }
     });
 

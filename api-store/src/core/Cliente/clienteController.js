@@ -47,7 +47,7 @@ const alterarCliente = (req, res) => {
         dataCadastro: new Date()
     }
 
-    Cliente.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Cliente.findByIdAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                 "message": "Erro interno"
@@ -67,10 +67,6 @@ const selecionarCliente = (req, res) => {
                 "message": "Erro interno"
             })
 
-
-        if (!data || data.length === 0)
-            return res.status(204).json(data);
-
         return res.status(200).json(data);
     });
 
@@ -83,13 +79,7 @@ const selecionarClientePorId = (req, res) => {
                 "message": "Erro interno"
             })
         }
-
-        if (!data || data.length === 0)
-            return res.status(404).json({
-                'message': 'Cliente não encontrado'
-            });
-
-
+  
         return res.status(200).json(data);
 
     });

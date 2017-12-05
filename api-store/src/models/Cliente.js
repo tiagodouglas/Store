@@ -15,8 +15,7 @@ module.exports = () => {
             required: true
         },
         numero: {
-            type: Number,
-            required: true
+            type: Number
         },
         estado: {
             type: String,
