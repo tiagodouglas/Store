@@ -20,7 +20,7 @@
     <div class="form-group col-md-12">
       <label for="categoria">Categoria</label>
       <select id="categoria" #categoria="ngModel" name="categoria" class="form-control" [(ngModel)]="model.categoria">
-        <option value="" selected>(Selecione)</option>
+        <option [value]="undefined">(Selecione)</option>
         <option *ngFor="let cat of categorias | async" [ngValue]="cat._id">
           {{cat.nome}}
         </option>
@@ -35,7 +35,7 @@
     <div class="form-group col-md-12">
       <label for="marca">Marca</label>
       <select id="marca" #marca="ngModel" name="marca" class="form-control" [(ngModel)]="model.marca">
-        <option value="" selected>(Selecione)</option>
+        <option [value]="undefined">(Selecione)</option>
         <option *ngFor="let mc of marcas | async" [ngValue]="mc._id">
           {{mc.nome}}
         </option>
