@@ -59,7 +59,7 @@
   </div>
 
   <div class="form-group text-center">
-    <button type="submit" class="btn btn-primary" [disabled]="!produtoForm.valid">Salvar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!produtoForm.valid || !categoria.value || !marca.value">Salvar</button>
 
   </div>
 
