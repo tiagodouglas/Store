@@ -12,24 +12,24 @@ export class ModoPgtoService {
   constructor(private http: HttpClient) { }
   
     public getAll() {
-      return this.http.get('http://localhost:3000/modo-pgto')
+      return this.http.get('http://localhost:3000/modoPgto')
     }
   
     public getById(id: String){
-      return this.http.get('http://localhost:3000/modo-pgto/' + id)
+      return this.http.get('http://localhost:3000/modoPgto/' + id)
     }
   
     public submit(data: Modo) {
       if(data._id) {
-        return this.http.put('http://localhost:3000/modo-pgto/' + data._id, data)
+        return this.http.put('http://localhost:3000/modoPgto/' + data._id, data)
       }
       else {
-        return this.http.post('http://localhost:3000/modo-pgto', data)
+        return this.http.post('http://localhost:3000/modoPgto', data)
       }
     }
   
     public delete(id: string) {
-      return this.http.delete('http://localhost:3000/modo-pgto/' + id)  
+      return this.http.delete('http://localhost:3000/modoPgto/' + id)  
     }
   
 

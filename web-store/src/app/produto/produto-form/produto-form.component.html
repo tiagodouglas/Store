@@ -1,3 +1,66 @@
-<p>
-  produto-form works!
-</p>
+<div class="text-left">
+  <button class="btn btn-transparent" routerLink="/produto">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+
+<form #produtoForm="ngForm" (ngSubmit)="submit()">
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" #nome="ngModel" [(ngModel)]="model.nome" id="nome" required placeholder="Nome" name="nome"
+        required>
+      <div class="alert alert-danger" *ngIf="nome.errors?.required && nome.touched">
+        Nome é obrigatório
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" #categoria="ngModel" name="categoria" class="form-control" [(ngModel)]="model.categoria">
+        <option value="" selected>(Selecione)</option>
+        <option *ngFor="let cat of categorias | async" [ngValue]="cat._id">
+          {{cat.nome}}
+        </option>
+      </select>
+      <div class="alert alert-danger" *ngIf="categoria.errors?.required && categoria.touched">
+        Categoria é obrigatório
+      </div>
+    </div>
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="marca">Marca</label>
+      <select id="marca" #marca="ngModel" name="marca" class="form-control" [(ngModel)]="model.marca">
+        <option value="" selected>(Selecione)</option>
+        <option *ngFor="let mc of marcas | async" [ngValue]="mc._id">
+          {{mc.nome}}
+        </option>
+      </select>
+
+      <div class="alert alert-danger" *ngIf="marca.errors?.required && marca.touched">
+        Marca é obrigatório
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="preco">Preço Unitário</label>
+      <input type="number" class="form-control" #preco="ngModel" [(ngModel)]="model.precoUnitario" id="preco" required placeholder="Preço Unitário" name="precoUnitario"
+        required>
+      <div class="alert alert-danger" *ngIf="preco.errors?.required && preco.touched">
+        Preço Unitário é obrigatório
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-primary" [disabled]="!produtoForm.valid">Salvar</button>
+
+  </div>
+
+</form>
