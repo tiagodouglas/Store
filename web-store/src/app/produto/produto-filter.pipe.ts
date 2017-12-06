@@ -12,9 +12,9 @@ export class ProdutoFilterPipe implements PipeTransform {
         }
         return items.filter(singleItem => 
             singleItem['nome'].normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||  
-            singleItem['precoUnitario'].normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
-            singleItem['categoria'].replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
-            singleItem['marca'].replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase())
+            singleItem['precoUnitario'].toString().replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
+            singleItem['categoria']['nome'].replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase()) ||
+            singleItem['marca']['nome'].replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.toLowerCase())
         );
     }
 }
