@@ -6,23 +6,20 @@ const inserirProduto = (req, res) => {
     const params = {
         nome: req.body.nome,
         precoUnitario: req.body.precoUnitario,
-        categoria: ObjectId(req.body.categoria)
+        categoria: ObjectId(req.body.categoria),
+        marca: ObjectId(req.body.marca)
     }
 
     Produto.create(params, (err, data) => {
 
         if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             });
 
         return res.status(201).json({
-            content: {
-                "_id": data._id,
-                "message": `Produto [${data.nome}] inserido com sucesso`
-            }
+            "_id": data._id,
+            "message": `Produto [${data.nome}] inserido com sucesso`
         });
     });
 
@@ -32,39 +29,30 @@ const alterarProduto = (req, res) => {
     const params = {
         nome: req.body.nome,
         precoUnitario: req.body.precoUnitario,
-        categoria: new ObjectId(req.body.categoria)
+        categoria: new ObjectId(req.body.categoria),
+        marca: new ObjectId(req.body.marca)
     }
 
-    Produto.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    Produto.findByIdAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             });
 
         return res.status(200).json({
-            content: {
-                "message": `Produto [${data.nome}] alterado com sucesso`
-            }
+            "message": `Produto [${data.nome}] alterado com sucesso`
         });
     });
 }
 
 const selecionarProduto = (req, res) => {
-    Produto.find().populate('Categoria', (err, data) => {
+    Produto.find().populate('categoria').populate('marca').exec((err, data) => {
         if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             })
 
-        if (!data || data.length === 0)
-            return res.status(404).json(data);
-
         return res.status(200).json(data);
-
     });
 }
 
@@ -72,37 +60,24 @@ const selecionarProdutoPorId = (req, res) => {
     Produto.findById(new ObjectId(req.params.id), (err, data) => {
         if (err) {
             return res.status(500).json({
-                content: { "message": "Erro interno" }
+                "message": "Erro interno"
             })
         }
 
-        if (!data || data.length === 0)
-            return res.status(404).json({
-                content: { 'message': 'Produto não encontrado' }
-            });
-
-
         return res.status(200).json(data);
-
     });
 
 }
 
 const excluirProduto = (req, res) => {
     Produto.findByIdAndRemove(new ObjectId(req.params.id), (err, data) => {
-        if (err) {
-            console.log(err.message);
+        if (err)
             return res.status(500).json({
-                content: {
-                    "message": "Erro interno"
-                }
+                "message": "Erro interno"
             })
-        }
 
         return res.status(200).json({
-            content: {
                 "message": `Produto [${data.nome}] removido com sucesso`
-            }
         });
     });
 }

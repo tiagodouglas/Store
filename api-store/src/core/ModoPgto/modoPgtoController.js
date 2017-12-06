@@ -6,7 +6,7 @@ const inserirModoPgto = (req, res) => {
 
     const params = {
         nome: req.body.nome,
-        detalhe: req.body.detalhe       
+        descricao: req.body.descricao       
     }
 
     ModoPgto.create(params, (err, data) => {
@@ -26,10 +26,10 @@ const inserirModoPgto = (req, res) => {
 const alterarModoPgto = (req, res) => {
         const params = {
         nome: req.body.nome,
-        detalhe: req.body.detalhe      
+        descricao: req.body.descricao      
     }
 
-    ModoPgto.findOneAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
+    ModoPgto.findByIdAndUpdate(new ObjectId(req.params.id), params, (err, data) => {
         if (err)
             return res.status(500).json({
                     "message": "Erro interno"

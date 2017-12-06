@@ -13,6 +13,10 @@ module.exports = () => {
         categoria: {
             type: mongoose.Schema.ObjectId,
             ref: 'Categoria'
+        },
+        marca: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Marca'
         }
     });
 
