@@ -1,12 +1,29 @@
 <app-navbar></app-navbar>
+<!-- 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <mat-card>
+                <mat-card-title>
+                    <app-title (titleChanged)="changedTitle($event)" [title]="title"></app-title>
+                </mat-card-title>
+                <mat-card-content>
+                    <router-outlet></router-outlet>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>-->
+
+
 
 <div class="container-fluid">
-    <mat-card>
-        <mat-card-title>
+    <div class="card">
+        <!-- <div class="card-header">
             <app-title (titleChanged)="changedTitle($event)" [title]="title"></app-title>
-        </mat-card-title>
-        <mat-card-content>
+        </div> -->
+        <div class="card-body">
             <router-outlet></router-outlet>
-        </mat-card-content>
-    </mat-card>
-</div>
+        </div>
+    </div>
+</div> 

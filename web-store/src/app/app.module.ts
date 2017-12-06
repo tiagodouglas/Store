@@ -1,3 +1,7 @@
+import { ModoPgtoFilterPipe } from './modo-pgto/categoria-filter.pipe';
+import { CategoriaFilterPipe } from './categoria/categoria-filter.pipe';
+import { VendedorFilterPipe } from './vendedor/vendedor-filter.pipe';
+import { ClienteFilterPipe } from './cliente/cliente-filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,9 +25,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ClienteListaComponent } from './cliente/cliente-lista/cliente-lista.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { TitleComponent } from './title/title.component';
-import { FilterPipe } from './filter.pipe';
 import { VendedorListaComponent } from './vendedor/vendedor-lista/vendedor-lista.component';
 import { VendedorFormComponent } from './vendedor/vendedor-form/vendedor-form.component';
+import { CategoriaListaComponent } from './categoria/categoria-lista/categoria-lista.component';
+import { CategoriaFormComponent } from './categoria/categoria-form/categoria-form.component';
+import { MarcaListaComponent } from './marca/marca-lista/marca-lista.component';
+import { MarcaFormComponent } from './marca/marca-form/marca-form.component';
+import { ProdutoListaComponent } from './produto/produto-lista/produto-lista.component';
+import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
+import { VendaListaComponent } from './venda/venda-lista/venda-lista.component';
+import { VendaFormComponent } from './venda/venda-form/venda-form.component';
+import { ModoPgtoListaComponent } from './modo-pgto/modo-pgto-lista/modo-pgto-lista.component';
+import { ModoPgtoFormComponent } from './modo-pgto/modo-pgto-form/modo-pgto-form.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MarcaFilterPipe } from './marca/marca-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,11 +48,26 @@ import { VendedorFormComponent } from './vendedor/vendedor-form/vendedor-form.co
     ClienteListaComponent,
     ClienteFormComponent,
     TitleComponent,
-    FilterPipe,
+    ClienteFilterPipe,
+    ModoPgtoFilterPipe,
+    MarcaFilterPipe,
+    VendedorFilterPipe,
+    CategoriaFilterPipe,
     VendedorListaComponent,
-    VendedorFormComponent
+    VendedorFormComponent,
+    CategoriaListaComponent,
+    CategoriaFormComponent,
+    MarcaListaComponent,
+    MarcaFormComponent,
+    ProdutoListaComponent,
+    ProdutoFormComponent,
+    VendaListaComponent,
+    VendaFormComponent,
+    ModoPgtoListaComponent,
+    ModoPgtoFormComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -1,24 +1,22 @@
 <div class="row">
   <div class="col-md-6">
       <div class="text-left">
-          <button mat-button routerLink="/">
+          <button class="btn btn-transparent" routerLink="/">
               <mat-icon>arrow_back</mat-icon>
           </button>
       </div>
   </div>
   <div class="col-md-6">
       <div class="text-right">
-          <button mat-fab routerLink="/vendedor/novo">
+          <button class="btn btn-primary" routerLink="/vendedor/novo">
               <mat-icon>add</mat-icon>
           </button>
       </div>
   </div>
 </div>
-<div cellspacing="0">
-  <mat-form-field style="width:100%">
-      <input matInput name="searchString" [(ngModel)]="searchString" placeholder="Pesquisar vendedor">
-  </mat-form-field>
-</div>
+<div class="input-group" >
+        <input class="form-control" name="searchString" [(ngModel)]="searchString" placeholder="Pesquisar vendedor">
+    </div>
 <table class="table table-hover table-responsive-md">
   <thead>
       <tr>
@@ -32,7 +30,7 @@
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let vendedor of pagedItems | filter : searchString; let i = index">
+      <tr *ngFor="let vendedor of pagedItems | vendedorFilter : searchString; let i = index">
           <td>
               <mat-icon [ngStyle]="{'color': vendedor.status? '#64DD17' : '#E53935'}">fiber_manual_record</mat-icon>
           </td>
@@ -41,12 +39,12 @@
           <td>{{vendedor.telefone}}</td>
           <td>{{vendedor.cpf}}</td>
           <td>
-              <button [routerLink]="['/vendedor', vendedor._id]" mat-button>
+              <button [routerLink]="['/vendedor', vendedor._id]" class="btn btn-transparent">
                   <mat-icon>mode_edit</mat-icon>
               </button>
           </td>
           <td>
-              <button mat-button [mat-menu-trigger-for]="deleteMenu" fxHide="false" fxHide.gt-sm>
+              <button class="btn btn-transparent" [mat-menu-trigger-for]="deleteMenu" fxHide="false" fxHide.gt-sm>
                   <mat-icon>delete</mat-icon>
               </button>
           </td>
@@ -62,19 +60,19 @@
 <div class="text-rigth">
   <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
       <li [ngClass]="{disabled:pager.currentPage === 1}">
-          <button mat-button (click)="setPage(1)">Primeira</button>
+          <button class="btn btn-light" (click)="setPage(1)">Primeira</button>
       </li>
       <li [ngClass]="{disabled:pager.currentPage === 1}">
-          <button mat-button (click)="setPage(pager.currentPage - 1)">Anterior</button>
+          <button class="btn btn-light" (click)="setPage(pager.currentPage - 1)">Anterior</button>
       </li>
       <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-          <button mat-button (click)="setPage(page)">{{page}}</button>
+          <button class="btn btn-light" (click)="setPage(page)">{{page}}</button>
       </li>
       <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-          <button mat-button (click)="setPage(pager.currentPage + 1)">Proxima</button>
+          <button class="btn btn-light" (click)="setPage(pager.currentPage + 1)">Proxima</button>
       </li>
       <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-          <button mat-button (click)="setPage(pager.totalPages)">Ultima</button>
+          <button class="btn btn-light" (click)="setPage(pager.totalPages)">Ultima</button>
       </li>
   </ul>
 </div>

@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-6">
         <div class="text-right">
-            <button class="btn btn-primary" routerLink="/cliente/novo">
+            <button class="btn btn-primary" routerLink="/marca/novo">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -16,35 +16,21 @@
 </div>
 
 <div class="input-group" >
-    <input class="form-control" name="searchString" [(ngModel)]="searchString" placeholder="Pesquisar cliente">
+    <input class="form-control" name="searchString" [(ngModel)]="searchString" placeholder="Pesquisar marca">
 </div>
 <table class="table table-hover table-responsive-md">
     <thead>
         <tr>
-            <th>Status</th>
             <th>Nome</th>
-            <th>Endereço</th>
-            <th>Cidade</th>
-            <th>Bairro</th>
-            <th>CPF</th>
-            <th>Telefone</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let cliente of pagedItems | clienteFilter : searchString; let i = index">
+        <tr *ngFor="let marca of pagedItems | marcaFilter : searchString; let i = index">
+            <td>{{marca.nome}}</td>
             <td>
-                <mat-icon [ngStyle]="{'color': cliente.status? '#64DD17' : '#E53935'}">fiber_manual_record</mat-icon>
-            </td>
-            <td>{{cliente.nome}}</td>
-            <td>{{cliente.endereco}}</td>
-            <td>{{cliente.cidade}}</td>
-            <td>{{cliente.bairro}}</td>
-            <td>{{cliente.cpf}}</td>
-            <td>{{cliente.telefone}}</td>
-            <td>
-                <button [routerLink]="['/cliente', cliente._id]" class="btn btn-transparent">
+                <button [routerLink]="['/marca', marca._id]" class="btn btn-transparent">
                     <mat-icon>mode_edit</mat-icon>
                 </button>
             </td>
@@ -55,7 +41,7 @@
             </td>
 
             <mat-menu x-position="after" #deleteMenu="matMenu">
-                <button mat-menu-item (click)="delete(cliente._id)">Sim</button>
+                <button mat-menu-item (click)="delete(marca._id)">Sim</button>
                 <button mat-menu-item>Não</button>
             </mat-menu>
         </tr>

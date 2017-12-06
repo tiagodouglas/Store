@@ -1,56 +1,103 @@
 <div class="text-left">
-  <button mat-button routerLink="/cliente">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-</div>
-
-
-<form #clienteForm="ngForm" (ngSubmit)="submit()">
-  <table class="full-width text-right" cellspacing="0">
-    <tr>
-      <td>
-        <mat-slide-toggle name="status" [(ngModel)]="model.status">Status</mat-slide-toggle>
-      </td>
-    </tr>
-  </table>
-
-  <div class="row">
-
-    <div class="col-md-6 offset-2">
-      <table class="full-width" cellspacing="0">
-        <tr>
-          <td>
-
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Nome" name="nome" [(ngModel)]="model.nome" required>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="full-width">
-              <input type="number" #cpf max="99999999999" maxlength="11" matInput placeholder="CPF" name="cpf" [(ngModel)]="model.cpf"
-                required>
-              <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="full-width">
-              <input type="number" matInput placeholder="Telefone" name="telefone" [(ngModel)]="model.telefone" required>
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Endereço" name="endereco" [(ngModel)]="model.endereco" required>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-
+        <button class="btn btn-transparent" routerLink="/vendedor">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
     </div>
+    
+    <form #vendedorForm="ngForm" (ngSubmit)="submit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" #nome="ngModel" [(ngModel)]="model.nome" id="nome" required placeholder="Nome" name="nome"
+                    required>
+    
+                <div class="alert alert-danger" *ngIf="nome.errors?.required && nome.touched">
+                    Nome é obrigatório
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cpf">CPF</label>
+                <input type="number" class="form-control" #cpf="ngModel" id="cpf" placeholder="CPF" name="cpf" [(ngModel)]="model.cpf" required>
+    
+                <div class="alert alert-danger" *ngIf="cpf.errors?.required && cpf.touched">
+                    CPF é obrigatório
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-slide-toggle name="status" [(ngModel)]="model.status">Status</mat-slide-toggle>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="endereco">Endereco</label>
+                <input type="text" class="form-control" id="endereco" #endereco="ngModel" placeholder="Endereço" name="endereco" [(ngModel)]="model.endereco"
+                    required>
+    
+                <div class="alert alert-danger" *ngIf="endereco.errors?.required && endereco.touched">
+                    Endereço é obrigatório
+                </div>
+            </div>
+    
+            <div class="form-group col-md-4">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" #bairro="ngModel" placeholder="Bairro" name="bairro" [(ngModel)]="model.bairro"
+                    required>
+    
+                <div class="alert alert-danger" *ngIf="bairro.errors?.required && bairro.touched">
+                    Bairro é obrigatório
+                </div>
+            </div>
+    
+            <div class="form-group col-md-2">
+                <label for="numero">Numero</label>
+                <input type="number" class="form-control" #numero="ngModel" id="endereco" placeholder="Numero" name="numero" [(ngModel)]="model.numero" required>
 
-  </div>
-
-  <div class="text-center">
-    <button type="submit" mat-raised-button color="primary">Salvar</button>
-  </div>
-</form>
+                <div class="alert alert-danger" *ngIf="numero.errors?.required && numero.touched" >
+                        Numero é obrigatório
+                    </div>
+            </div>
+    
+        </div>
+    
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="endereco">Telefone</label>
+                <input type="text" class="form-control" #telefone="ngModel" id="telefone" name="telefone" [(ngModel)]="model.telefone" required>
+    
+                <div class="alert alert-danger" *ngIf="telefone.errors?.required && telefone.touched">
+                    Telefone é obrigatório
+                </div>
+    
+            </div>
+    
+            <div class="form-group col-md-4">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" #cidade="ngModel" id="cidade" name="cidade" [(ngModel)]="model.cidade" required>
+    
+                <div class="alert alert-danger" *ngIf="cidade.errors?.required && cidade.touched" >
+                        Cidade é obrigatório
+                    </div>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cep">CEP</label>
+                <input type="number" class="form-control" #cep="ngModel" id="cep" name="cep" [(ngModel)]="model.cep" required>
+    
+                <div class="alert alert-danger" *ngIf="cep.errors?.required && cep.touched" >
+                        CEP é obrigatório
+                    </div>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="estado">Estado</label>
+                <input type="text" class="form-control" #estado="ngModel" id="estado" name="estado" maxlength="2" [(ngModel)]="model.estado" required>
+    
+                <div class="alert alert-danger" *ngIf="estado.errors?.required && estado.touched" >
+                        Estado é obrigatório
+                    </div>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary" [disabled]="!vendedorForm.valid">Salvar</button>
+    
+        </div>
+    
+    </form>

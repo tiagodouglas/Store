@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   public title: String = 'WebStore'
-  constructor() { }
+  isCollapsed: Boolean; 
+  constructor() { 
+    this.isCollapsed = true;
+  }
 
   ngOnInit() {
   }

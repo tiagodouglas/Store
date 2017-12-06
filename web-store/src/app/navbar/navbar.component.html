@@ -1,30 +1,101 @@
-<mat-toolbar class="navbar sticky-top " layout="row" color="primary">
+<!--<mat-toolbar class="navbar sticky-top " layout="row" color="primary">
     <span class="navbar-brand">{{title}}</span>
+    <span class="fill-remaining-space"></span>
 
-    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <div fxLayout="row">
 
         <button mat-button routerLink="/">
             <mat-icon>home</mat-icon>
         </button>
-        <span class="fill-remaining-space"></span>
-        <button mat-button routerLink="/cliente">Cliente <mat-icon>account_circle</mat-icon></button>
-        <button mat-button routerLink="/vendedor">Vendedor <mat-icon>face</mat-icon></button>
-        <button mat-button routerLink="/categoria">Categoria <mat-icon>assignment</mat-icon></button>
-        <button mat-button routerLink="/marca">Marca <mat-icon>copyright</mat-icon></button>
-        <button mat-button routerLink="/produto">Produto <mat-icon>add_box</mat-icon></button>
-        <button mat-button routerLink="/cliente">Modo PGTO <mat-icon>payment</mat-icon></button>
-        <button mat-button routerLink="/cliente">Venda <mat-icon>shoppping_cart</mat-icon></button>
-        <button mat-button routerLink="/historico">Historico <mat-icon>history</mat-icon></button>
+        <button mat-button routerLink="/cliente">Cliente
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <button mat-button routerLink="/vendedor">Vendedor
+            <mat-icon>face</mat-icon>
+        </button>
+        <button mat-button routerLink="/categoria">Categoria
+            <mat-icon>assignment</mat-icon>
+        </button>
+        <button mat-button routerLink="/marca">Marca
+            <mat-icon>copyright</mat-icon>
+        </button>
+        <button mat-button routerLink="/produto">Produto
+            <mat-icon>add_box</mat-icon>
+        </button>
+        <button mat-button routerLink="/modo-pgto">Modo PGTO
+            <mat-icon>payment</mat-icon>
+        </button>
+        <button mat-button routerLink="/venda">Venda
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+
     </div>
-    <!-- <span class="fill-remaining-space"></span> -->
+    <span class="fill-remaining-space"></span>
 
-    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
         Admin
-    </button>
+    </button> -->
 
+<!-- </mat-toolbar> -->
 
-</mat-toolbar>
-
-<mat-menu x-position="after" #menu="matMenu">
+<!-- <mat-menu x-position="after" #menu="matMenu">
     <button mat-menu-item routerLink="/logout">Logout</button>
-</mat-menu>
+</mat-menu> -->
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">{{title}}</a>
+    <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/">
+                    <mat-icon>home</mat-icon> Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/cliente">Cliente
+                    <mat-icon>account_circle</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/vendedor">Vendedor
+                    <mat-icon>face</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/categoria">Categoria
+                    <mat-icon>assignment</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/marca">Marca
+                    <mat-icon>copyright</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/produto">Produto
+                    <mat-icon>add_box</mat-icon>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/modo-pgto">Modo PGTO
+                    <mat-icon>payment</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/venda">Venda
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

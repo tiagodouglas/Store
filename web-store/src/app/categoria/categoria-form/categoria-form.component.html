@@ -1,0 +1,35 @@
+<div class="text-left">
+  <button class="btn btn-transparent" routerLink="/categoria">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+
+<form #categoriaForm="ngForm" (ngSubmit)="submit()">
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" #nome="ngModel" [(ngModel)]="model.nome" id="nome" required placeholder="Nome" name="nome" required>
+
+      <div class="alert alert-danger" *ngIf="nome.errors?.required && nome.touched">
+          Nome é obrigatório
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="descricao">Descrição</label>
+      <input type="text" class="form-control" #descricao="ngModel" id="descricao" placeholder="Descrição" name="descricao" [(ngModel)]="model.descricao"
+        required>
+
+        <div class="alert alert-danger" *ngIf="descricao.errors?.required && descricao.touched">
+            Descrição é obrigatório
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-primary" [disabled]="!categoriaForm.valid">Salvar</button>
+
+  </div>
+
+</form>
