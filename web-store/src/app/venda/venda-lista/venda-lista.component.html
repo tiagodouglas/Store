@@ -1,3 +1,76 @@
-<p>
-  venda-lista works!
-</p>
+<div class="row">
+  <div class="col-md-6">
+      <div class="text-left">
+          <button class="btn btn-transparent" routerLink="/">
+              <mat-icon>arrow_back</mat-icon>
+          </button>
+      </div>
+  </div>
+  <div class="col-md-6">
+      <div class="text-right">
+          <button class="btn btn-primary" routerLink="/venda/novo">
+              <mat-icon>add</mat-icon>
+          </button>
+      </div>
+  </div>
+</div>
+
+<div class="input-group" >
+  <input class="form-control" name="searchString" [(ngModel)]="searchString" placeholder="Pesquisar venda">
+</div>
+<table class="table table-hover table-responsive-md">
+  <thead>
+      <tr>
+          <th>Nome</th>
+          <th>Vendedor</th>
+          <th>Cliente</th>
+          <th>Data Venda</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let venda of pagedItems | vendaFilter : searchString; let i = index">
+          <td>{{venda.nome}}</td>
+          <td>{{venda.vendedor.nome}}</td>
+          <td>{{venda.cliente.nome}}</td>
+          <td>{{venda.dataVenda}}</td>
+          <td>
+              <button [routerLink]="['/venda', venda._id]" class="btn btn-transparent">
+                  <mat-icon>mode_edit</mat-icon>
+              </button>
+          </td>
+          <td>
+              <button class="btn btn-transparent" [mat-menu-trigger-for]="deleteMenu" fxHide="false" fxHide.gt-sm>
+                  <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+
+          <mat-menu x-position="after" #deleteMenu="matMenu">
+              <button mat-menu-item (click)="delete(venda._id)">Sim</button>
+              <button mat-menu-item>Não</button>
+          </mat-menu>
+      </tr>
+  </tbody>
+</table>
+
+<div class="text-rigth">
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <button class="btn btn-light" (click)="setPage(1)">Primeira</button>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <button class="btn btn-light" (click)="setPage(pager.currentPage - 1)">Anterior</button>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <button class="btn btn-light" (click)="setPage(page)">{{page}}</button>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <button class="btn btn-light" (click)="setPage(pager.currentPage + 1)">Proxima</button>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <button class="btn btn-light" (click)="setPage(pager.totalPages)">Ultima</button>
+      </li>
+  </ul>
+</div>
+

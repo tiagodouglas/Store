@@ -1,3 +1,4 @@
+import { VendaFilterPipe } from './venda/venda-filter.pipe';
 import { ProdutoFilterPipe } from './produto/produto-filter.pipe';
 import { ModoPgtoFilterPipe } from './modo-pgto/modo-filter.pipe';
 import { CategoriaFilterPipe } from './categoria/categoria-filter.pipe';
@@ -53,6 +54,7 @@ import { MarcaFilterPipe } from './marca/marca-filter.pipe';
     ModoPgtoFilterPipe,
     ProdutoFilterPipe,
     MarcaFilterPipe,
+    VendaFilterPipe,
     VendedorFilterPipe,
     CategoriaFilterPipe,
     VendedorListaComponent,
